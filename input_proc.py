@@ -61,16 +61,17 @@ def energy_processor(section_start):
             elif 'above' not in tmp:
                 Molecule.species_count += 1
                 Molecule.ground_species_count += 1
-                Molecule.number.append(int(tmp[0]))
-                Molecule.name.append(str(tmp[2]))
-                Molecule.energy.append(float(tmp[4]))
+              #  Molecule.number.append(int(tmp[0]))
+                Molecule.name.append(str(tmp[0]))
+                Molecule.energy.append(float(tmp[2]))
             else:
                 Molecule.species_count += 1
                 Molecule.above_species_count += 1
-                Molecule.number.append(int(tmp[0]))
-                Molecule.name.append(str(tmp[2]))
-                Molecule.energy.append(float(tmp[4]))
-                Molecule.above_state.append(int(tmp[8]))
+              #  Molecule.number.append(int(tmp[0]))
+                Molecule.name.append(str(tmp[0]))
+                Molecule.energy.append(float(tmp[2]))
+                #Molecule.above_state.append(int(tmp[6]))
+                Molecule.above_state.append(str(tmp[6]))
 
     Molecule.range_energy = max(Molecule.energy) - min(Molecule.energy)
     Molecule.max_energy = max(Molecule.energy)
@@ -92,9 +93,9 @@ def connection_processor(section_start):
             Molecule.connection_count += 1
             for k in range(0, Molecule.species_count):
               if Molecule.name[k] == tmp[0]:
-                Molecule.left_connection.append(int(Molecule.number[k]))
+                Molecule.left_connection.append(k+1)
               if Molecule.name[k] == tmp[2]:
-                Molecule.right_connection.append(int(Molecule.number[k]))
+                Molecule.right_connection.append(k+1)
 
     return None
 

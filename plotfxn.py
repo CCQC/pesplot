@@ -36,8 +36,12 @@ def generate_xcoords():
         Molecule.right_endpt.append(tmp2)
 
     for i in range(0, Molecule.above_species_count):
-        tmp1 = Molecule.left_endpt[Molecule.above_state[i] - 1]
-        tmp2 = Molecule.right_endpt[Molecule.above_state[i] - 1]
+        #Search for index of molecule name
+        for idx,val in enumerate(Molecule.name):
+            if val == Molecule.above_state[i]:
+                tmp = idx
+        tmp1 = Molecule.left_endpt[tmp]
+        tmp2 = Molecule.right_endpt[tmp]
         Molecule.left_endpt.append(tmp1)
         Molecule.right_endpt.append(tmp2)
 
