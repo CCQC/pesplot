@@ -1,11 +1,16 @@
 $energies
- 1 - MVR_O2 - 0.0
- 2 - PR - -21.60
- 3 - TS1 - -1.1
- 4 - QR1 - -20.0
- 5 - TS7 - -10.4
- 6 - HPECO - -15.2
- 7 - P1 - -48.9
+MVR_O2 - 0.0
+PR - -21.60
+TS1 - -1.1
+QR1 - -20.0
+TS7 - -10.4
+HPECO - -15.2
+P1 - -48.9
+#----divider----# < --- all 'above' statements must be below here
+test - -30.0 - above - PR
+test1 - -35.0 - above - TS1
+test1a - -12.0 - above - TS1
+test2 - -25.0 - above - HPECO
 $end
 
 
@@ -16,6 +21,11 @@ TS1 - QR1
 QR1 - TS7
 TS7 - HPECO
 HPECO - P1
+MVR_O2 - test
+PR - test1
+PR - test1a
+test1a - TS7
+TS7 - test2
 $end
 
 $plot_format
