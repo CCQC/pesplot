@@ -62,8 +62,8 @@ def plt_spec_lines():
                color=PlotParameter.species_line_color, lw=PlotParameter.species_line_width, linestyle='-')
       plt.text(mid_line, shift1, en, weight='bold', horizontalalignment='center',
                fontsize=PlotParameter.energy_font_size, color='black')
-      #plt.text(mid_line, shift2, Molecule.name[i], weight='bold', horizontalalignment='center',
-      #         fontsize=PlotParameter.name_font_size, color='black')
+      plt.text(mid_line, shift2, Molecule.name[i], weight='bold', horizontalalignment='center',
+               fontsize=PlotParameter.name_font_size, color='black')
 
 
       plt.yticks(np.arange(PlotParameter.tick_min, PlotParameter.tick_max, PlotParameter.tick_intvl))

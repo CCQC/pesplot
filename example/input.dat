@@ -6,7 +6,6 @@ QR1     -20.0
 TS7     -10.4
 HPECO   -15.2
 P1      -48.9
-#----divider----# < --- all 'above' statements must be below here
 test    -30.0 above PR
 test1   -35.0 above TS1
 test1a  -5.0 above TS1

@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 """
 
 Potential Energy Surface Plotter
