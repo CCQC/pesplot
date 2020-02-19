@@ -75,13 +75,16 @@ def plt_connecting_lines():
     """
 
     for i in range(0, Molecule.connection_count):
-      tmp1 = Molecule.right_endpt[Molecule.left_connection[i] - 1]
-      tmp2 = Molecule.left_endpt[Molecule.right_connection[i] - 1]
-      tmp3 = Molecule.energy[Molecule.left_connection[i] - 1]
-      tmp4 = Molecule.energy[Molecule.right_connection[i] - 1]
+        tmp1 = Molecule.right_endpt[Molecule.left_connection[i] - 1]
+        tmp2 = Molecule.left_endpt[Molecule.right_connection[i] - 1]
+        tmp3 = Molecule.energy[Molecule.left_connection[i] - 1]
+        tmp4 = Molecule.energy[Molecule.right_connection[i] - 1]
 
-      plt.plot([tmp1, tmp2], [tmp3, tmp4], color=PlotParameter.connection_line_color,
-                 lw=PlotParameter.connection_line_width, linestyle='--')
+        #plt.plot([tmp1, tmp2], [tmp3, tmp4], color=PlotParameter.connection_line_color,
+        #           lw=PlotParameter.connection_line_width, linestyle='--')
+        plt.plot([tmp1, tmp2], [tmp3, tmp4], color=PlotParameter.connection_line_color,
+                   lw=PlotParameter.connection_line_width, linestyle='--')
+        pass
 
     return None
 

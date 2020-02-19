@@ -63,15 +63,15 @@ def energy_processor(section_start):
                 Molecule.ground_species_count += 1
               #  Molecule.number.append(int(tmp[0]))
                 Molecule.name.append(str(tmp[0]))
-                Molecule.energy.append(float(tmp[2]))
+                Molecule.energy.append(float(tmp[1]))
             else:
                 Molecule.species_count += 1
                 Molecule.above_species_count += 1
               #  Molecule.number.append(int(tmp[0]))
                 Molecule.name.append(str(tmp[0]))
-                Molecule.energy.append(float(tmp[2]))
+                Molecule.energy.append(float(tmp[1]))
                 #Molecule.above_state.append(int(tmp[6]))
-                Molecule.above_state.append(str(tmp[6]))
+                Molecule.above_state.append(str(tmp[3]))
 
     Molecule.range_energy = max(Molecule.energy) - min(Molecule.energy)
     Molecule.max_energy = max(Molecule.energy)
