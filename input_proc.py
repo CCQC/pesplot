@@ -12,9 +12,14 @@ from specs import OutFileParameter
 def input_processor():
     """ Checks command line input from user. Prints error messages if needed. Causes program to exit. """
 
-    parser = argparse.ArgumentParser(description="Produces a plot of a computed potential energy surface.")
+    parser = argparse.ArgumentParser(
+        description="Produces a plot of a computed potential energy surface.")
 
-    parser.add_argument('-i', '--input', type=str, default='input.dat', help="Name of the input file to be read in")
+    parser.add_argument('-i',
+                        '--input',
+                        type=str,
+                        default='input.dat',
+                        help="Name of the input file to be read in")
     #parser.add_argument('-o', '--output', type=str, default='output.dat', help="Name of the output file to be created.")
 
     args = parser.parse_args()
@@ -61,16 +66,13 @@ def energy_processor(section_start):
             elif 'above' not in tmp:
                 Molecule.species_count += 1
                 Molecule.ground_species_count += 1
-              #  Molecule.number.append(int(tmp[0]))
                 Molecule.name.append(str(tmp[0]))
                 Molecule.energy.append(float(tmp[1]))
             else:
                 Molecule.species_count += 1
                 Molecule.above_species_count += 1
-              #  Molecule.number.append(int(tmp[0]))
                 Molecule.name.append(str(tmp[0]))
                 Molecule.energy.append(float(tmp[1]))
-                #Molecule.above_state.append(int(tmp[6]))
                 Molecule.above_state.append(str(tmp[3]))
 
     Molecule.range_energy = max(Molecule.energy) - min(Molecule.energy)
@@ -83,7 +85,8 @@ def energy_processor(section_start):
 def connection_processor(section_start):
     """ Processes information to plot out the connection lines. """
 
-    Molecule.connection_type = Input.input_file_content[section_start + 1].lstrip().rstrip().lower()
+    Molecule.connection_type = Input.input_file_content[
+        section_start + 1].lstrip().rstrip().lower()
 
     for i in range(section_start + 1, Input.input_file_length):
         tmp = Input.input_file_content[i].lstrip().rstrip().split()
@@ -92,10 +95,10 @@ def connection_processor(section_start):
                 break
             Molecule.connection_count += 1
             for k in range(0, Molecule.species_count):
-              if Molecule.name[k] == tmp[0]:
-                Molecule.left_connection.append(k+1)
-              if Molecule.name[k] == tmp[2]:
-                Molecule.right_connection.append(k+1)
+                if Molecule.name[k] == tmp[0]:
+                    Molecule.left_connection.append(k + 1)
+                if Molecule.name[k] == tmp[2]:
+                    Molecule.right_connection.append(k + 1)
 
     return None
 
@@ -150,7 +153,7 @@ def plot_format_processor(section_start):
 def calc_stuff():
     """ Using input from user, determine parameters for plot formatting. """
 
-    PlotParameter.name_vshift = 1#PlotParameter.name_vshift_scale_fact * Molecule.range_energy
+    PlotParameter.name_vshift = PlotParameter.name_vshift_scale_fact * Molecule.range_energy
     PlotParameter.energy_vshift = PlotParameter.energy_vshift_scale_fact * Molecule.range_energy
     PlotParameter.y_axis_top_lim = Molecule.max_energy + PlotParameter.y_axis_top_extend
     PlotParameter.y_axis_bot_lim = Molecule.min_energy - PlotParameter.y_axis_bot_extend
@@ -161,4 +164,5 @@ def calc_stuff():
             tmp = '$' + name[k] + '$'
             name[k] = tmp
 
-sys.dont_write_bytecode = True            
+
+sys.dont_write_bytecode = True

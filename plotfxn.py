@@ -1,4 +1,3 @@
-
 import numpy as np
 from matplotlib import pyplot as plt
 import pyparsing
@@ -8,8 +7,10 @@ from specs import PlotParameter
 from specs import OutFileParameter
 import sys
 
+
 def minus_formatter(x):
-      return str(x).replace('-', '\u2212') 
+    return str(x).replace('-', '\u2212')
+
 
 def format_axes():
     """ Format the x- and y-axes. Default scaling factors defined in llama.py are used, unless user specifies a
@@ -17,8 +18,16 @@ def format_axes():
     """
 
     plt.axes(frameon=False)
-    plt.axvline(0, PlotParameter.y_axis_bot_lim, PlotParameter.y_axis_top_lim, color='k')
-    plt.tick_params(which='both', bottom='off', top='off', right='off', labelbottom='off', labelsize=18)
+    plt.axvline(0,
+                PlotParameter.y_axis_bot_lim,
+                PlotParameter.y_axis_top_lim,
+                color='k')
+    plt.tick_params(which='both',
+                    bottom=False,
+                    top=False,
+                    right=False,
+                    labelbottom=False,
+                    labelsize=18)
     plt.xlim(0, PlotParameter.x_axis_right_lim)
     plt.ylim(PlotParameter.y_axis_bot_lim, PlotParameter.y_axis_top_lim)
     plt.ylabel(PlotParameter.y_axis_label, fontsize=24)
@@ -37,7 +46,7 @@ def generate_xcoords():
 
     for i in range(0, Molecule.above_species_count):
         #Search for index of molecule name
-        for idx,val in enumerate(Molecule.name):
+        for idx, val in enumerate(Molecule.name):
             if val == Molecule.above_state[i]:
                 tmp = idx
         tmp1 = Molecule.left_endpt[tmp]
@@ -52,21 +61,36 @@ def plt_spec_lines():
     """ Plot the lines that correspond to the molecular species. """
 
     for i in range(0, Molecule.species_count):
-      mid_line = ( (Molecule.right_endpt[i] + Molecule.left_endpt[i]) / 2 ) - ( (Molecule.right_endpt[i] - Molecule.left_endpt[i]) * 0.1)
-      shift1 = Molecule.energy[i] - PlotParameter.energy_vshift
-      shift2 = Molecule.energy[i] + PlotParameter.name_vshift
+        mid_line = ((Molecule.right_endpt[i] + Molecule.left_endpt[i]) / 2) - (
+            (Molecule.right_endpt[i] - Molecule.left_endpt[i]) * 0.1)
+        shift1 = Molecule.energy[i] - PlotParameter.energy_vshift
+        shift2 = Molecule.energy[i] + PlotParameter.name_vshift
 
-      en = minus_formatter('{0:5.2f}'.format(Molecule.energy[i]))
+        en = minus_formatter('{0:5.2f}'.format(Molecule.energy[i]))
 
-      plt.plot([Molecule.left_endpt[i], Molecule.right_endpt[i]], [Molecule.energy[i], Molecule.energy[i]],
-               color=PlotParameter.species_line_color, lw=PlotParameter.species_line_width, linestyle='-')
-      plt.text(mid_line, shift1, en, weight='bold', horizontalalignment='center',
-               fontsize=PlotParameter.energy_font_size, color='black')
-      plt.text(mid_line, shift2, Molecule.name[i], weight='bold', horizontalalignment='center',
-               fontsize=PlotParameter.name_font_size, color='black')
+        plt.plot([Molecule.left_endpt[i], Molecule.right_endpt[i]],
+                 [Molecule.energy[i], Molecule.energy[i]],
+                 color=PlotParameter.species_line_color,
+                 lw=PlotParameter.species_line_width,
+                 linestyle='-')
+        plt.text(mid_line,
+                 shift1,
+                 en,
+                 weight='bold',
+                 horizontalalignment='center',
+                 fontsize=PlotParameter.energy_font_size,
+                 color='black')
+        plt.text(mid_line,
+                 shift2,
+                 Molecule.name[i],
+                 weight='bold',
+                 horizontalalignment='center',
+                 fontsize=PlotParameter.name_font_size,
+                 color='black')
 
-
-      plt.yticks(np.arange(PlotParameter.tick_min, PlotParameter.tick_max, PlotParameter.tick_intvl))
+        plt.yticks(
+            np.arange(PlotParameter.tick_min, PlotParameter.tick_max,
+                      PlotParameter.tick_intvl))
 
 
 def plt_connecting_lines():
@@ -82,8 +106,10 @@ def plt_connecting_lines():
 
         #plt.plot([tmp1, tmp2], [tmp3, tmp4], color=PlotParameter.connection_line_color,
         #           lw=PlotParameter.connection_line_width, linestyle='--')
-        plt.plot([tmp1, tmp2], [tmp3, tmp4], color=PlotParameter.connection_line_color,
-                   lw=PlotParameter.connection_line_width, linestyle='--')
+        plt.plot([tmp1, tmp2], [tmp3, tmp4],
+                 color=PlotParameter.connection_line_color,
+                 lw=PlotParameter.connection_line_width,
+                 linestyle='--')
         pass
 
     return None
@@ -94,9 +120,9 @@ def create_pdf():
 
     fig = plt.gcf()
     fig.set_size_inches(OutFileParameter.width, OutFileParameter.height)
-    fig.savefig(OutFileParameter.name + '.' + OutFileParameter.ext, dpi=OutFileParameter.dpi)
-
+    fig.savefig(OutFileParameter.name + '.' + OutFileParameter.ext,
+                dpi=OutFileParameter.dpi)
     return None
 
-sys.dont_write_bytecode = True            
 
+sys.dont_write_bytecode = True

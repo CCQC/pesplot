@@ -13,20 +13,18 @@ Authors:
 
 """
 
-import plotfxn as plot
-import input_proc as in_proc
+import plotfxn 
+import input_proc
 
 # Call the series of functions which read the command line input and
 
-in_proc.input_processor()
-in_proc.section_finder()
+input_proc.input_processor()
+input_proc.section_finder()
 
 # Call functions to run matplotlib and create pdf of potential energy surface plot.
 
-plot.format_axes()
-plot.generate_xcoords()
-plot.plt_spec_lines()
-plot.plt_connecting_lines()
-plot.create_pdf()
-
-
+plotfxn.format_axes()
+plotfxn.generate_xcoords()
+plotfxn.plt_spec_lines()
+plotfxn.plt_connecting_lines()
+plotfxn.create_pdf()

@@ -1,5 +1,6 @@
 import sys
 
+
 class Input:
     """ Class to store arguments from command line input. All variable values set by argparse in input_proc.py. """
 
@@ -12,7 +13,7 @@ class Input:
     input_file_length = 0
 
     # Run program to not make .pyc
-    sys.dont_write_bytecode = True            
+    sys.dont_write_bytecode = True
 
 
 class Molecule:
@@ -50,14 +51,14 @@ class PlotParameter:
     y_axis_bot_lim = 0
     y_axis_top_extend = 2.5
     y_axis_bot_extend = 2.5
-    y_axis_label = 'Relative Enthalpy at 0 K (kcal/mol)'
+    y_axis_label = "$\Delta$H$_{0K}$ (kcal mol$^{-1}$)"
     x_axis_right_lim = 0
     x_axis_right_extend = 0.75
     x_axis_label = ''
 
     # Parameters for name and energy labels
     name_vshift = 0
-    name_vshift_scale_fact = 0.1
+    name_vshift_scale_fact = 0.015
     name_font_size = 16
     name_latex_format = 'off'
     energy_vshift = 0
@@ -76,7 +77,7 @@ class PlotParameter:
     tick_min = -50.0
     tick_max = 50.0
     tick_intvl = 5.0
-   
+
 
 class OutFileParameter:
     """ Variables specify what the format of the output file that is generated. """
@@ -87,5 +88,5 @@ class OutFileParameter:
     height = 9
     dpi = 1000
 
-sys.dont_write_bytecode = True            
 
+sys.dont_write_bytecode = True
