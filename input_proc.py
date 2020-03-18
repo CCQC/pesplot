@@ -153,8 +153,8 @@ def plot_format_processor(section_start):
 def calc_stuff():
     """ Using input from user, determine parameters for plot formatting. """
 
-    PlotParameter.name_vshift = PlotParameter.name_vshift_scale_fact * Molecule.range_energy
-    PlotParameter.energy_vshift = PlotParameter.energy_vshift_scale_fact * Molecule.range_energy
+    PlotParameter.name_vshift = 0.5#PlotParameter.name_vshift_scale_fact * Molecule.range_energy
+    PlotParameter.energy_vshift = 1.5#PlotParameter.energy_vshift_scale_fact * Molecule.range_energy
     PlotParameter.y_axis_top_lim = Molecule.max_energy + PlotParameter.y_axis_top_extend
     PlotParameter.y_axis_bot_lim = Molecule.min_energy - PlotParameter.y_axis_bot_extend
     PlotParameter.x_axis_right_lim = Molecule.ground_species_count + PlotParameter.x_axis_right_extend

@@ -5,30 +5,24 @@ TS1     -1.1
 QR1     -20.0
 TS7     -10.4
 HPECO   -15.2
-P1      -48.9
-test    -30.0 above PR
-test1   -35.0 above TS1
-test1a  -5.0 above TS1
-test2   -25.0 above HPECO
+TS8     -8.2 above TS7
+P1      -30 above HPECO
 $end
 
 
 $connect
-MVR_O2  - PR
+MVR_O2  & PR
 PR      & TS1
-TS1     <- QR1
-QR1     -> TS7
-TS7     -- HPECO
-MVR_O2  - test
-PR      : test1
-PR      > test1a
-test1a  < TS7
-TS7     <--> test2
+TS1     & QR1
+QR1     & TS7
+QR1     & TS8
+TS7     & HPECO
+TS8     & P1
 $end
 
 $plot_format
 energy_precision = 1 #Num. of decimal places in energies
-ytick_min = -50.0
+ytick_min = -35.0
 ytick_max =  5.0
 ytick_intvl = 5.0
 $end
